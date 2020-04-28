@@ -1,24 +1,22 @@
 $(document).ready(function() {
 
-	// var bgFixedY = [];
+	var bgFixedY = [];
 
-	// $('.bg-fixedjs > div').each(function(){
-	// 	var postion = $(this).offset().top;
-	// 	bgFixedY.push(postion);
-	// 	console.log(bgFixedY);
-	// })
+	$('.bg-fixedjs > div').each(function(){
+		var postion = $(this).offset().top;
+		bgFixedY.push(postion);
+	})
 
 
-	// $(window).scroll(function() {
-	//   var scrolledY = $(window).scrollTop();
-	//   for (var i = 0; i < $('.bg-fixedjs > div').length; i++) {
-	//   	console.log((scrolledY)+','+ bgFixedY[i]);
-	//   	$('.bg-fixedjs > div').eq(i).css('background-position', 'center ' + (((scrolledY) - (bgFixedY[i]) )) + 'px');
-	//   }
-	// });
+	$(window).scroll(function() {
+	  var scrolledY = $(window).scrollTop();
+	  for (var i = 0; i < $('.bg-fixedjs > div').length; i++) {
+	  	$('.bg-fixedjs > div').eq(i).css('background-position', 'center ' + (((scrolledY) - (bgFixedY[i]) )) + 'px');
+	  }
+	});
 
-	var parallax = document.getElementsByClassName('parallax');
-	new simpleParallax(parallax);
+	// var parallax = document.getElementsByClassName('parallax');
+	// new simpleParallax(parallax);
 
 	$('.summary').click(function(){
 		$(this).parent('.details').toggleClass('active');
