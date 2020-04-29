@@ -1,17 +1,23 @@
 $(document).ready(function() {
 
 	var bgFixedY = [];
+	var secTopArr = [];
 
-	function getBgPos() {
+	function getPos() {
 		$('.bg-fixedjs > div').each(function(){
 			var postion = $(this).offset().top;
 			bgFixedY[$(this).index()] = postion;
 		})
+		$('section').each(function(){
+			var postion = $(this).offset().top;
+			secTopArr[$(this).index()] = postion;
+		})
 	}
 
-
+	var windowTop = 0;
 	$(window).scroll(function() {
 	  var scrolledY = $(window).scrollTop();
+	  windowTop = scrolledY;
 	  // console.log(scrolledY+','+bgFixedY[0])
 	  for (var i = 0; i < $('.bg-fixedjs > div').length; i++) {
 	  	$('.bg-fixedjs > div').eq(i).css('background-position', 'center ' + (((scrolledY) - (bgFixedY[i]) )) + 'px');
@@ -23,7 +29,7 @@ $(document).ready(function() {
 	$(window).resize(function() {
 		winWidth = $(window).width();
 
-		getBgPos();
+		getPos();
 		getProgress();
 		if (winWidth < 748) {
 			$('.single-full-slider').slick('unslick');
@@ -109,7 +115,7 @@ $(document).ready(function() {
 
 	/* slider */
 	$('.single-full-slider').on('init', function(event, slick){
-	  	getBgPos();
+	  	getPos();
 	});
 	$('.single-full-slider').slick({
 		infinite: true,
@@ -157,16 +163,35 @@ $(document).ready(function() {
 
 	/* gtag */
 	$('.gtagbtn').click(function(){
-		var name = $(this).data('gevent');
-		var cate = $(this).data('gcate');
-		var label = $(this).data('glabel');
-		var value = $(this).data('gvalue');
+		var gname = $(this).data('gevent');
+		var gcate = $(this).data('gcate');
+		var glabel = $(this).data('glabel');
+		var gvalue = $(this).data('gvalue');
 
-		gtag('event', name, {
-		  'event_category': cate,
-		  'event_label': label,
-		  'value': value
+		console.log(gname);
+
+		gtag('event', gname, {
+		  'event_category': gcate,
+		  'event_label': glabel,
+		  'value': gvalue
 		});
 	})
 
+	window.onbeforeunload = function () {
+		var secId;
+		for (var i = 0; i < secTopArr.length; i++) {
+			if(windowTop > secTopArr[i]){
+				secId = $('section').eq(i).attr('id');
+			}
+		}
+		
+	    gtag('event', 'leave', {
+		  'event_category': 'close',
+		  'event_label': secId,
+		  'value': windowTop
+		});
+	};
 })
+
+	
+	

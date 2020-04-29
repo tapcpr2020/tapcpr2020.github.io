@@ -543,13 +543,13 @@ img {
 	margin: auto;
 	z-index: 0;
 }
-/*
+
 .slider-item:nth-of-type(n + 4) .card-purpose::after {
 	bottom: auto;
 	top: -1.5em;
 	z-index: 0;
 }
-*/
+
 
 /* slider */
 .slick-slider {
