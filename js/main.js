@@ -8,11 +8,11 @@ $(document).ready(function() {
 			bgFixedY[$(this).index()] = postion;
 		})
 	}
-	getBgPos();
 
 
 	$(window).scroll(function() {
-	  var scrolledY = $('html, body').scrollTop();
+	  var scrolledY = $(window).scrollTop();
+	  // console.log(scrolledY+','+bgFixedY[0])
 	  for (var i = 0; i < $('.bg-fixedjs > div').length; i++) {
 	  	$('.bg-fixedjs > div').eq(i).css('background-position', 'center ' + (((scrolledY) - (bgFixedY[i]) )) + 'px');
 	  }
@@ -25,11 +25,11 @@ $(document).ready(function() {
 
 		getBgPos();
 		getProgress();
-		// if (winWidth < 748) {
-		// 	$('.single-slider').slick('refresh');
-		// }else {
-		// 	$('.single-slider').slick('unslick');
-		// }
+		if (winWidth < 748) {
+			$('.single-full-slider').slick('unslick');
+		}else {
+			$('.single-full-slider').slick('refresh');
+		}
 	})
 
 	// var parallax = document.getElementsByClassName('parallax');
@@ -108,6 +108,22 @@ $(document).ready(function() {
 	
 
 	/* slider */
+	$('.single-full-slider').on('init', function(event, slick){
+	  	getBgPos();
+	});
+	$('.single-full-slider').slick({
+		infinite: true,
+		dots: true,
+		slidesToShow: 1,
+		slidesToScroll: 1,
+		responsive: [
+		    {
+		      breakpoint: 748,
+		      settings: "unslick"
+		    }
+		  ]
+	})
+	
 	// $('.single-slider').slick({
 	//     infinite: true,
 	// 	dots: true,
