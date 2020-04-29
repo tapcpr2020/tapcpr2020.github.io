@@ -1,3 +1,5 @@
+response.setHeader("Set-Cookie", "HttpOnly;Secure;SameSite=Strict");
+
 $(document).ready(function() {
 
 	var bgFixedY = [];
@@ -153,6 +155,20 @@ $(document).ready(function() {
 	  		btn.removeClass('copied');
 	  	 }, 800);
 
+	})
+
+	/* gtag */
+	$('.gtagbtn').click(function(){
+		var name = $(this).data('gevent');
+		var cate = $(this).data('gcate');
+		var label = $(this).data('glabel');
+		var value = $(this).data('gvalue');
+
+		gtag('event', name, {
+		  'event_category': cate,
+		  'event_label': label,
+		  'value': value
+		});
 	})
 
 })
