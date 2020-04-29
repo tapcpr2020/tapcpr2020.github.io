@@ -589,7 +589,7 @@ img {
 .single-full-slider .slick-arrow {
 	height: 50px;
 	width: 30px;
-	top: 0;
+	top: 70px;
 	bottom: 0;
 	margin: auto;
 }
