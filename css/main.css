@@ -199,6 +199,7 @@ div.bg-pics {
 	background-position: 0% 0%;
 	opacity: 0;
 	transition: all 1s ease-in-out;
+	top: 0;
 }
 #bgPics1 {
 	animation: shinning 20s infinite 0s;
@@ -552,6 +553,7 @@ img {
 /* slider */
 .slick-slider {
 	position: relative;
+	overflow: hidden;
 }
 .slider-item {
 	display: inline-block;
@@ -1042,3 +1044,43 @@ img {
 	box-shadow: none;
 }
 
+/* copy & hint */
+.btn-copy-link {
+	position: relative;
+}
+.hint {
+	display: inline-block;
+	padding: 5px 10px;
+	background: rgba(0, 0, 0, 0.7);
+	border-radius: 5px;
+	color: #fff;
+	font-size: 14px;
+	position: absolute;
+	top: -45px;
+	left: -100px;
+	right: -100px;
+	max-width: 93px;
+	margin: auto;
+	white-space: nowrap;
+	font-family: 'Arial', 'Noto Sans CJK TC', 'PingFang TC', 'Heiti TC', 'Noto Sans TC', source-han-sans-traditional, 'Microsoft JhengHei', sans-serif;
+	transition: all 0.4s ease-in-out;
+	opacity: 0;
+	transform: translateY(5px);
+}
+.hint::after {
+	content: '';
+	position: absolute;
+	width: 0;
+	height: 0;
+	bottom: -5px;
+	left: 0;
+	right: 0;
+	margin: auto;
+	border-style: solid;
+	border-width: 5px 4px 0 4px;
+	border-color: rgba(0, 0, 0, 0.7) transparent transparent transparent;
+}
+.btn-copy-link.copied .hint {
+	opacity: 1;
+	transform: translateY(0px);
+}

@@ -116,6 +116,8 @@ $(document).ready(function() {
 		dots: true,
 		slidesToShow: 1,
 		slidesToScroll: 1,
+		autoplay: true,
+		autoplaySpeed: 2000,
 		responsive: [
 		    {
 		      breakpoint: 748,
@@ -137,5 +139,20 @@ $(document).ready(function() {
 	// 	    }
 	// 	  ]
 	// });
+
+	/* copy link */
+	$('.btn-copy-link').click(function(){
+		var $temp = $("<input>");
+	  	$("body").append($temp);
+	  	var btn = $(this);
+	  	$temp.val(btn.data('href')).select();
+	  	document.execCommand("copy");
+	  	$temp.remove();
+	  	btn.addClass('copied');
+	  	setTimeout(function(){ 
+	  		btn.removeClass('copied');
+	  	 }, 800);
+
+	})
 
 })
