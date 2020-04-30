@@ -180,7 +180,7 @@ $(document).ready(function() {
 	window.onbeforeunload = function () {
 		var secId;
 		for (var i = 0; i < secTopArr.length; i++) {
-			if(windowTop > secTopArr[i]){
+			if(windowTop >= secTopArr[i]){
 				secId = $('section').eq(i).attr('id');
 			}
 		}
