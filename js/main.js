@@ -1,3 +1,24 @@
+var request = new XMLHttpRequest();
+request.open('GET', `https://tapcpr.backme.tw/api/projects/1283.json?token=2d417b5c6095de999cd10394f6ee63bb`, true);
+
+request.responseType = 'json';
+request.send();
+
+var money_goal = 12000000;
+var money_pledged = 0;
+var backer_count = 0;
+
+request.onload = function() {
+  if (request.status >= 200 && request.status < 400) {
+  
+    var content = request.response;
+    money_goal = content['money_goal']
+    money_pledged = content['money_pledged'];
+    backer_count = content['backer_count'];
+
+  }
+};
+
 $(document).ready(function() {
 
 	var bgFixedY = [];
@@ -38,43 +59,23 @@ $(document).ready(function() {
 		}
 	})
 
-	// var parallax = document.getElementsByClassName('parallax');
-	// new simpleParallax(parallax);
-
-	$('.summary').click(function(){
-		$(this).parent('.details').toggleClass('active');
-	})
-	$('.tab').click(function(){
-		$(this).parents('.tabs-list').find('.tab').removeClass('active')
-		$(this).addClass('active');
-		var page = $(this).attr('data-page');
-
-		$(page).parents('.pages-list').find('.page').removeClass('active')
-		$(page).toggleClass('active')
-	})
-
 	/* progress */
-	var iframeBacker = $('#progBacker');
-	function getBakerIframe() {
-		var percent = $('#progBacker').contents().find('h1.active').html();
-		if (percent) {
-			console.log(percent);
-		}else {
-			// setTimeout(function(){
-			// 	getBakerIframe();
-			// }, 2000)
-		}
-	}
-	getBakerIframe();   
-
-	function getProgress() {
+	function getProgress(goal, pledged, count) {
+		var tempcomp = Math.floor(pledged/goal*100);
+		$('#progressBar').data('complete', tempcomp)
 		var progComplete = $('#progressBar').data('complete');
 		var compLength = 'calc(' + progComplete + '% - 2px)';
 		$('.bar-wide .progress-complete').css('width', compLength);
 		$('.bar-long .progress-complete').css('height', compLength);
 		lightCard(progComplete);
-	} 
-	getProgress();
+		$('.backer-count').html(formatNumber(count));
+		$('.money-pledged').html(formatNumber(pledged));
+	}
+	getProgress(money_goal, money_pledged, backer_count);
+
+	function formatNumber(num) {
+	  return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
+	}
 
 	function lightCard(progComplete) {
 		var card = $('.card-purpose');
@@ -100,6 +101,21 @@ $(document).ready(function() {
 		
 		
 	}
+
+	/* summary tab */
+
+	$('.summary').click(function(){
+		$(this).parent('.details').toggleClass('active');
+	})
+	$('.tab').click(function(){
+		$(this).parents('.tabs-list').find('.tab').removeClass('active')
+		$(this).addClass('active');
+		var page = $(this).attr('data-page');
+
+		$(page).parents('.pages-list').find('.page').removeClass('active')
+		$(page).toggleClass('active')
+	})
+
 
 	/* scrollspy */
     var anchor = new Array;
