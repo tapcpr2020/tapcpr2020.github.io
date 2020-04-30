@@ -13,7 +13,7 @@ request.onload = function() {
   
     var content = request.response;
     money_goal = content['money_goal']
-    money_pledged = content['money_pledged'];
+    money_pledged = Math.floor(content['money_pledged']);
     backer_count = content['backer_count'];
 
   }
@@ -60,6 +60,10 @@ $(document).ready(function() {
 	})
 
 	/* progress */
+	function formatNumber(num) {
+	  return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
+	}
+	
 	function getProgress(goal, pledged, count) {
 		var tempcomp = Math.floor(pledged/goal*100);
 		$('#progressBar').data('complete', tempcomp)
@@ -72,10 +76,6 @@ $(document).ready(function() {
 		$('.money-pledged').html(formatNumber(pledged));
 	}
 	getProgress(money_goal, money_pledged, backer_count);
-
-	function formatNumber(num) {
-	  return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
-	}
 
 	function lightCard(progComplete) {
 		var card = $('.card-purpose');
