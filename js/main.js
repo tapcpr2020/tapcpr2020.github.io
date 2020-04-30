@@ -53,6 +53,20 @@ $(document).ready(function() {
 		$(page).toggleClass('active')
 	})
 
+	/* progress */
+	var iframeBacker = $('#progBacker');
+	function getBakerIframe() {
+		var percent = iframeBacker.contents().find('h1.active').html();
+		if (percent.length > 0) {
+			console.log(percent);
+		}else {
+			// setTimeout(function(){
+			// 	getBakerIframe();
+			// }, 2000)
+		}
+	}
+	getBakerIframe();   
+
 	function getProgress() {
 		var progComplete = $('#progressBar').data('complete');
 		var compLength = 'calc(' + progComplete + '% - 2px)';
@@ -191,6 +205,7 @@ $(document).ready(function() {
 		  'value': windowTop
 		});
 	};
+
 })
 
 	
