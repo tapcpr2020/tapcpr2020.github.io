@@ -51,7 +51,7 @@ $(document).ready(function() {
 		winWidth = $(window).width();
 
 		getPos();
-		getProgress();
+		getProgress(money_goal, money_pledged, backer_count);
 		if (winWidth < 748) {
 			$('.single-full-slider').slick('unslick');
 		}else {
