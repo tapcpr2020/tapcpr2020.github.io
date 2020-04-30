@@ -57,7 +57,7 @@ $(document).ready(function() {
 	var iframeBacker = $('#progBacker');
 	function getBakerIframe() {
 		var percent = iframeBacker.contents().find('h1.active').html();
-		if (percent.length > 0) {
+		if (percent) {
 			console.log(percent);
 		}else {
 			// setTimeout(function(){
