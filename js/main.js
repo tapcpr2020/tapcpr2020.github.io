@@ -75,7 +75,18 @@ $(document).ready(function() {
 		$('.backer-count').html(formatNumber(count));
 		$('.money-pledged').html(formatNumber(pledged));
 	}
-	getProgress(money_goal, money_pledged, backer_count);
+
+	function getProData() {
+		if (backer_count != 0) {
+		getProgress(money_goal, money_pledged, backer_count);
+		}else {
+			setTimeout(function () {
+				getProData();
+			}, 200);
+		}
+	}
+	
+	getProData();
 
 	function lightCard(progComplete) {
 		var card = $('.card-purpose');
