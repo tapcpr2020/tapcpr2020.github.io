@@ -129,9 +129,13 @@ $(document).ready(function() {
 
 	/* hover */
 	$('.card-purpose').click(function () {
-		$(this).toggleClass('hover');
+		if ($(this).hasClass('hover')) {
+			$(this).removeClass('hover');
+		}else{
+			$(this).parents('.card-purpose-group').find('.card-purpose').removeClass('hover')
+			$(this).addClass('hover');
+		}
 	})
-
 
 	/* scrollspy */
     var anchor = new Array;
