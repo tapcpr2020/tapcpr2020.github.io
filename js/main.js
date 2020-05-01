@@ -160,6 +160,14 @@ $(document).ready(function() {
 			$(this).addClass('hover');
 		}
 	})
+	$('.card').click(function () {
+		if ($(this).hasClass('hover')) {
+			$(this).removeClass('hover');
+		}else{
+			$(this).parents('.card-list').find('.card').removeClass('hover')
+			$(this).addClass('hover');
+		}
+	})
 
 	/* scrollspy */
     var anchor = new Array;

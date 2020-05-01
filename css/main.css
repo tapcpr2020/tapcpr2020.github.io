@@ -648,7 +648,7 @@ img {
 .card-pink {
 	border-color: #f7708b;
 }
-.card:hover {
+.card:hover, .card.hover {
 	background: linear-gradient(rgba(255, 255, 255, 1), rgba(255, 245, 230, 1) 100%);
 	border-color: #f78c1e;
 	transform: translateY(-5px);
