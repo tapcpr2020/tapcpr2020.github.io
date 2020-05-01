@@ -525,7 +525,9 @@ img {
 	height: 100%;
 	display: block;
 }
-.card-purpose:hover .card-back, .card-purpose:focus .card-back {
+.card-purpose:hover .card-back, 
+.card-purpose:focus .card-back,
+.card-purpose.hover .card-back {
     opacity: 1;
 }
 .card-purpose::after {

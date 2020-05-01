@@ -127,6 +127,11 @@ $(document).ready(function() {
 		$(page).toggleClass('active')
 	})
 
+	/* hover */
+	$('.card-purpose').click(function () {
+		$(this).toggleClass('hover');
+	})
+
 
 	/* scrollspy */
     var anchor = new Array;
