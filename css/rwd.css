@@ -81,7 +81,7 @@
 	.bar-long .progress-complete {
 		width: 6px;
     	max-width: none;
-		height: calc(50% - 2px);
+		height: calc(0% - 2px);
 	}
 	.bar-long .progress-complete span {
 		right: -6px;
