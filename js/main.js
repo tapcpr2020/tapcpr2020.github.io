@@ -72,8 +72,32 @@ $(document).ready(function() {
 		$('.bar-wide .progress-complete').css('width', compLength);
 		$('.bar-long .progress-complete').css('height', compLength);
 		lightCard(progComplete);
-		$('.backer-count').html(formatNumber(count));
-		$('.money-pledged').html(formatNumber(pledged));
+		// $('.backer-count').html(formatNumber(count));
+		$('.backer-count').animate(
+		  { 
+		    to: count
+		  }, 
+		  {
+		    duration:500, 
+		    easing:'linear', 
+		    step: function(val)
+		    {
+		      $('.backer-count').html(formatNumber(Math.floor(val)));
+		    }
+		  });
+		$('.money-pledged').animate(
+		  { 
+		    to: pledged
+		  }, 
+		  {
+		    duration:1000, 
+		    easing:'linear', 
+		    step: function(val)
+		    {
+		      $(".money-pledged").html(formatNumber(Math.floor(val)));
+		    }
+		  });
+		// $('.money-pledged').html(formatNumber(pledged));
 	}
 
 	function getProData() {
