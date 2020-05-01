@@ -664,7 +664,7 @@ img {
 	justify-content: space-between;
 	min-height: 73px;
 }
-.card:hover .card-header {
+.card:hover .card-header, .card.hover .card-header {
 	background: linear-gradient(rgba(247, 170, 30, 1), rgba(247, 134, 30, 1) 100%);
 }
 .card-pink .card-header {
