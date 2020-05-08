@@ -8,7 +8,11 @@
 	  function gtag(){dataLayer.push(arguments);}
 	  gtag('js', new Date());
 
-	  gtag('config', 'UA-164941241-1');
+	  gtag('config', 'UA-164941241-1', {
+		 'linker': {
+		 'domains': ['tapcpr.org', 'backme.tw', 'core.spgateway.com']
+		 }
+		});
 	</script>
 
 	<!-- Facebook Pixel Code -->
