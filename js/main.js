@@ -274,6 +274,14 @@ $(document).ready(function() {
 		});
 	};
 
+	/* fb pixel */
+	$('.fbpbtn').click(function () {
+		var fbvalue = $(this).data('gvalue');
+		fbq('track', 'AddToCart', {
+	   	  value: fbvalue,
+	  	});
+	})
+
 })
 
 	
