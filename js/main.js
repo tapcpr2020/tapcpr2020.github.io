@@ -276,6 +276,7 @@ $(document).ready(function() {
 
 	/* fb pixel */
 	$('.fbpbtn').click(function () {
+		fbq('track', 'AddToWishlist');
 		var fbvalue = $(this).data('gvalue');
 		fbq('track', 'AddToCart', {
 	   	  value: fbvalue,
