@@ -1,3 +1,8 @@
+@media screen and (max-width: 1600px) {
+	.igimg {
+		max-width: 25%;
+	}
+}
 @media screen and (max-width: 1280px) {
 	div.bg-hug {
 		background-position: calc(100% + 200px) 50%;
