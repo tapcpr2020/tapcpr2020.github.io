@@ -565,7 +565,7 @@ img {
 	padding-top: 0;
 }
 .igimg {
-	max-width: 300px;
+	max-width: 25%;
 }
 .slider-item {
 	display: inline-block;

@@ -7,6 +7,9 @@
 	div.bg-hug {
 		background-size: 70%;
 	}
+	.igimg {
+		max-width: 33.33333%;
+	}
 }
 @media screen and (max-width: 748px) {
 	.igimg {
