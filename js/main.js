@@ -49,14 +49,13 @@ $(document).ready(function() {
 
 	$(window).resize(function() {
 		winWidth = $(window).width();
-
-		getPos();
 		getProgress(money_goal, money_pledged, backer_count);
 		if (winWidth < 748) {
 			$('.single-full-slider').slick('unslick');
 		}else {
 			$('.single-full-slider').slick('refresh');
 		}
+		getPos();
 	})
 
 	/* progress */
@@ -212,6 +211,44 @@ $(document).ready(function() {
 		      settings: "unslick"
 		    }
 		  ]
+	})
+	$('.igslider').on('init', function(event, slick){
+	  	getPos();
+	});
+	$('.igslider').slick({
+		dots: false,
+	  infinite: true,
+	  slidesToShow: 4,
+	  slidesToScroll: 1,
+  	autoplay: true,
+  	autoplaySpeed: 1500,
+  	pauseOnHover: false,
+  	responsive: [
+	    {
+	      breakpoint: 1024,
+	      settings: {
+	        slidesToShow: 3,
+	        slidesToScroll: 1
+	      }
+	    },
+	    {
+	      breakpoint: 768,
+	      settings: {
+	        slidesToShow: 2,
+	        slidesToScroll: 1
+	      }
+	    },
+	    {
+	      breakpoint: 480,
+	      settings: {
+	        slidesToShow: 1,
+	        slidesToScroll: 1
+	      }
+	    }
+	    // You can unslick at a given breakpoint now by adding:
+	    // settings: "unslick"
+	    // instead of a settings object
+	  ]
 	})
 	
 	// $('.single-slider').slick({

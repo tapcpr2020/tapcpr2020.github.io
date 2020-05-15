@@ -9,6 +9,9 @@
 	}
 }
 @media screen and (max-width: 748px) {
+	.igimg {
+		max-width: 50%;
+	}
 	.hide-sm {
 		display: none;
 	}
@@ -320,5 +323,11 @@
 	#bgPics10 {
 		background-position: -100% -450%;
 		animation: shinning 40s infinite 36s;
+	}
+}
+
+@media screen and (max-width: 480px) {
+	.igimg {
+		max-width: 100%;
 	}
 }
