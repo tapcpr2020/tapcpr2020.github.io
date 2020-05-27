@@ -4,7 +4,7 @@ request.open('GET', `https://tapcpr.backme.tw/api/projects/1283.json?token=2d417
 request.responseType = 'json';
 request.send();
 
-var money_goal = 12000000;
+var money_goal = 4000000;
 var money_pledged = 0;
 var backer_count = 0;
 
@@ -96,6 +96,9 @@ $(document).ready(function() {
 		      $(".money-pledged").html(formatNumber(Math.floor(val)));
 		    }
 		  });
+		if (progComplete >= 100) {
+			$('#afterComplete').removeClass('hide');
+		}
 		// $('.money-pledged').html(formatNumber(pledged));
 	}
 
