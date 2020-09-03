@@ -459,7 +459,7 @@ img {
 .single-full-slider {
 }
 /* card-purpose */
-.card-purpose {
+.card-purpose, .card-white {
 	display: inline-block;
 	position: relative;
 	text-align: center;
@@ -479,7 +479,8 @@ img {
 .card-purpose svg {
 	fill: #001644;
 }
-.card-purpose::before {
+
+.card-purpose::before, .card-white::before {
 	content: '';
 	display: block;
 	position: absolute;
@@ -554,7 +555,7 @@ img {
 	top: -1.5em;
 	z-index: 0;
 }
-.card-purpose.w100 {
+.card-purpose.w100, .card-white.w100 {
 	width: 100%;
 	max-width: 650px;
 	height: auto;
@@ -564,12 +565,24 @@ img {
 	margin: 0 auto;
 	display: block;
 }
-.card-purpose.w100::before {
+.card-purpose.w100::before, .card-white.w100::before {
 	width: calc(100% + 4px);
 	height: calc(100% + 4px);
 }
-.card-purpose.w100::after {
+.card-purpose.w100::after, .card-white.w100::after {
 	content: none;
+}
+
+.card-white.w100 {
+	background: linear-gradient(rgba(255, 255, 255, 1), rgba(255, 255, 255, 0.5) 100%);
+	border: 0;
+}
+.card-white.w100::before {
+	border-color: #fff;
+	pointer-events: none;
+}
+.link {
+	color: #3668a2;
 }
 /* slider */
 .slick-slider {
@@ -708,6 +721,27 @@ img {
 	flex-direction: column;
 	justify-content: space-between;
 	height: 100%;
+}
+.mincard .card-body {
+	text-align: center;
+	padding: 30px 30px;
+}
+.mincard {
+	height: auto;
+	width: 330px;
+}
+.stop-sec {
+	background-color: rgba(0, 0, 0, 0.75);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	z-index: 99;
+}
+#secDonate {
+	position: relative;
 }
 .card-tab {
 	position: absolute;
